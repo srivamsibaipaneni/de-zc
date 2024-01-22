@@ -13,19 +13,10 @@ provider "google" {
   region      = "us-east1"
 }
 
-resource "google_storage_bucket" "auto-expire" {
-  name          = "auto-expiring-bucket"
+resource "google_storage_bucket" "demo-buckek" {
+  name          = "learn-terraform-412005-terra-bucket"
   location      = "US"
   force_destroy = true
-
-  lifecycle_rule {
-    condition {
-      age = 3
-    }
-    action {
-      type = "Delete"
-    }
-  }
 
   lifecycle_rule {
     condition {
