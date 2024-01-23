@@ -41,3 +41,9 @@ terraform.rc
 #ignore key files
 **/.keys/*
 *.json
+
+/Users/srivamsibaipaneni/data-engineering-zc-1/week1_basics/terraform/variables.tf
+
+
+
+
