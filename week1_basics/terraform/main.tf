@@ -8,22 +8,25 @@ terraform {
 }
 
 provider "google" {
-  credentials = "./keys/key-creds.json"
-  project     = "learn-terraform-412005"
-  region      = "us-east1"
+  credentials = file(var.service_acc_credentials)
+  project     = var.project
+  region      = var.region
 }
 
-resource "google_storage_bucket" "demo-buckek" {
-  name          = "learn-terraform-412005-terra-bucket"
-  location      = "US"
-  force_destroy = true
+resource "google_compute_instance" "default" {
+  name         = var.vm_name
+  machine_type = "n1-standard-4"
+  zone         = "us-east1-b"
 
-  lifecycle_rule {
-    condition {
-      age = 1
+  boot_disk {
+    initialize_params {
+      image = "ubuntu-2004-focal-v20220118"
+      size  = 30
     }
-    action {
-      type = "AbortIncompleteMultipartUpload"
-    }
+  }
+
+  network_interface {
+    network = "default"
+    access_config {}
   }
 }
