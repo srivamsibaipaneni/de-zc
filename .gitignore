@@ -42,7 +42,7 @@ terraform.rc
 **/.keys/*
 *.json
 
-/Users/srivamsibaipaneni/data-engineering-zc-1/week1_basics/terraform/variables.tf
+**/variables.tf
 
 
 
